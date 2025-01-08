@@ -1,25 +1,10 @@
 import styles from "./List.module.scss";
 import Column from "../Column/Column";
-import { useEffect, useState } from "react";
-import shortid from "shortid";
 import ColumnForm from "../ColumnForm/ColumnForm";
 import { useSelector } from "react-redux";
 
 const List = () => {
   const columns = useSelector((state) => state.columns);
-
-  const addCard = (newCard, columnId) => {
-    const columnsUpdated = columns.map((column) => {
-      if (column.id === columnId)
-        return {
-          ...column,
-          cards: [...column.cards, { id: shortid(), title: newCard.title }],
-        };
-      else return column;
-    });
-
-    // setColumns(columnsUpdated);
-  };
 
   return (
     <div className={styles.list}>
