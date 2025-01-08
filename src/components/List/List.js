@@ -3,48 +3,21 @@ import Column from "../Column/Column";
 import { useEffect, useState } from "react";
 import shortid from "shortid";
 import ColumnForm from "../ColumnForm/ColumnForm";
+import { useSelector } from "react-redux";
 
 const List = () => {
-  const [columns, setColumns] = useState([
-    {
-      id: 1,
-      title: "Books",
-      icon: "book",
-      cards: [
-        { id: 1, title: "This is Going to Hurt" },
-        { id: 2, title: "Interpreter of Maladies" },
-      ],
-    },
-    {
-      id: 2,
-      title: "Movies",
-      icon: "film",
-      cards: [
-        { id: 1, title: "Harry Potter" },
-        { id: 2, title: "Star Wars" },
-      ],
-    },
-    {
-      id: 3,
-      title: "Games",
-      icon: "gamepad",
-      cards: [
-        { id: 1, title: "The Witcher" },
-        { id: 2, title: "Skyrim" },
-      ],
-    },
-  ]);
+  const columns = useSelector((state) => state.columns);
 
   const addColumn = (newColumn) => {
-    setColumns([
-      ...columns,
-      {
-        id: shortid(),
-        title: newColumn.title,
-        icon: newColumn.icon,
-        cards: [],
-      },
-    ]);
+    // setColumns([
+    //   ...columns,
+    //   {
+    //     id: shortid(),
+    //     title: newColumn.title,
+    //     icon: newColumn.icon,
+    //     cards: [],
+    //   },
+    // ]);
   };
 
   const addCard = (newCard, columnId) => {
@@ -57,7 +30,7 @@ const List = () => {
       else return column;
     });
 
-    setColumns(columnsUpdated);
+    // setColumns(columnsUpdated);
   };
 
   return (
