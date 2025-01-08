@@ -6,7 +6,6 @@ import { getUsersSelector } from "../../redux/store";
 
 const Column = (props) => {
   const cards = useSelector((state) => getUsersSelector(state, props.id));
-  console.log("Column render");
   return (
     <article className={styles.column}>
       <h2 className={styles.title}>
