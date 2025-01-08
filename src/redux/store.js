@@ -2,12 +2,20 @@ import { createStore } from "redux";
 import initialState from "./initialState";
 import shortid from "shortid";
 import { strContains } from "../components/utils/strContains";
+import { createSelector } from "reselect";
+const getAllCards = (state) => state.cards;
+export const getSearchString = (store) => store.searchString;
 
-export const getFilteredCards = ({ cards, searchString }, columnId) =>
-  cards.filter(
-    (card) =>
-      card.columnId === columnId && strContains(card.title, searchString),
-  );
+const getColumnId = (store, columnId) => columnId;
+
+export const getUsersSelector = createSelector(
+  [getAllCards, getSearchString, getColumnId],
+  (cards, searchString, columnId) =>
+    cards.filter(
+      (card) =>
+        card.columnId === columnId && strContains(card.title, searchString),
+    ),
+);
 
 export const getAllColumns = (store) => store.columns;
 
