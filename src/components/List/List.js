@@ -8,18 +8,6 @@ import { useSelector } from "react-redux";
 const List = () => {
   const columns = useSelector((state) => state.columns);
 
-  const addColumn = (newColumn) => {
-    // setColumns([
-    //   ...columns,
-    //   {
-    //     id: shortid(),
-    //     title: newColumn.title,
-    //     icon: newColumn.icon,
-    //     cards: [],
-    //   },
-    // ]);
-  };
-
   const addCard = (newCard, columnId) => {
     const columnsUpdated = columns.map((column) => {
       if (column.id === columnId)
@@ -51,11 +39,10 @@ const List = () => {
             title={column.title}
             icon={column.icon}
             cards={column.cards}
-            addCard={addCard}
           />
         ))}
       </section>
-      <ColumnForm action={addColumn} />
+      <ColumnForm />
     </div>
   );
 };
