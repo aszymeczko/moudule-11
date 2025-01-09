@@ -10,4 +10,16 @@
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+  &.active {
+    button {
+      color: $color-warning;
+    }
+  }
+  button {
+    border: none;
+    background: transparent;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

@@ -1,10 +1,34 @@
 import Hero from "../Hero/Hero";
+import { useSelector } from "react-redux";
+import { getFavoritesCards } from "../../redux/store";
+import Card from "../Card/Card";
+import styles from "./Favorite.module.scss";
 
-const Favorite = () => (
-  <>
-    <Hero title={"Favorite"} />
-    orem ipsum
-  </>
-);
+const Favorite = () => {
+  const cards = useSelector(getFavoritesCards);
+
+  const renderCards = () => {
+    if (cards.length === 0) return "No cards...";
+    return (
+      <ul className={styles.cards}>
+        {cards.map((card) => (
+          <Card
+            key={card.id}
+            title={card.title}
+            isFavorite={card.isFavorite}
+            id={card.id}
+          />
+        ))}
+      </ul>
+    );
+  };
+
+  return (
+    <>
+      <Hero title={"Favorite"} />
+      <article className={styles.column}>{renderCards()}</article>
+    </>
+  );
+};
 
 export default Favorite;
