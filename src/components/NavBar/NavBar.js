@@ -1,6 +1,7 @@
 import styles from "./NavBar.module.scss";
 import Container from "../Container/Container";
 import { Link, NavLink } from "react-router-dom";
+import shortid from "shortid";
 
 const NavBar = () => {
   const links = [
@@ -12,13 +13,13 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <Container>
         <div className={styles.navigation}>
-          <Link to={"/"}>
+          <NavLink to={"/"}>
             <i className="fa fa-home"></i>
-          </Link>
+          </NavLink>
 
           <ul>
             {links.map((link) => (
-              <li>
+              <li key={link.name}>
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? styles.linkActive : undefined

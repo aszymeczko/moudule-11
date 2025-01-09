@@ -4,7 +4,7 @@ import shortid from "shortid";
 import { strContains } from "../components/utils/strContains";
 import { createSelector } from "reselect";
 const getAllCards = (state) => state.cards;
-export const getSearchString = (store) => store.searchString;
+export const getSearchString = (state) => state.searchString;
 
 const getColumnId = (store, columnId) => columnId;
 
@@ -18,6 +18,14 @@ export const getUsersSelector = createSelector(
 );
 
 export const getAllColumns = (store) => store.columns;
+export const getAllLists = (store) => store.lists;
+
+export const getListById = ({ lists }, listId) =>
+  lists.find((list) => list.id === listId);
+
+export const getColumnsByList = ({ columns }, listId) => {
+  return columns.filter((col) => col.listId === listId);
+};
 
 export const addColumn = (payload) => ({ type: "ADD_COLUMN", payload });
 export const addCard = (payload) => ({ type: "ADD_CARD", payload });

@@ -11,7 +11,8 @@
     margin: -20px 0;
     a {
       text-decoration: none;
-      color: #fff;
+      color: $color-light;
+      font-weight: bold;
       &:visited, a:link {
         text-decoration: none;
       }
