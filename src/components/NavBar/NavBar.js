@@ -1,25 +1,34 @@
 import styles from "./NavBar.module.scss";
 import Container from "../Container/Container";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
+  const links = [
+    { name: "Home", route: "/" },
+    { name: "Favorite", route: "/favorite" },
+    { name: "About", route: "/about" },
+  ];
   return (
     <nav className={styles.navbar}>
       <Container>
         <div className={styles.navigation}>
-          <a href={"/"}>
+          <Link to={"/"}>
             <i className="fa fa-home"></i>
-          </a>
+          </Link>
 
           <ul>
-            <li>
-              <a href={"/"}>Home</a>
-            </li>
-            <li>
-              <a href={"/favorite"}>Favorite</a>
-            </li>
-            <li>
-              <a href={"/about"}>About</a>
-            </li>
+            {links.map((link) => (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? styles.linkActive : undefined
+                  }
+                  to={link.route}
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>

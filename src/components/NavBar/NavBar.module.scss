@@ -24,9 +24,12 @@
       li {
         float: left;
         margin-left: 20px;
-
+        .linkActive {
+          color: $color-warning;
+        }
       }
     }
   }
 }
+
 
