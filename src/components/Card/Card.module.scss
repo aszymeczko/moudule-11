@@ -11,15 +11,18 @@
   justify-content: space-between;
   font-weight: bold;
   &.active {
-    button {
+    button.addToFavorite {
       color: $color-warning;
     }
   }
+  .buttonsWrapper {}
   button {
     border: none;
     background: transparent;
     &:hover {
       cursor: pointer;
     }
+    .addToFavorite{}
+    .remove{}
   }
 }
