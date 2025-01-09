@@ -1,8 +1,8 @@
 import Hero from "../Hero/Hero";
 import { useSelector } from "react-redux";
-import { getFavoritesCards } from "../../redux/store";
 import Card from "../Card/Card";
 import styles from "./Favorite.module.scss";
+import { getFavoritesCards } from "../../redux/cardsRedux";
 
 const Favorite = () => {
   const cards = useSelector(getFavoritesCards);

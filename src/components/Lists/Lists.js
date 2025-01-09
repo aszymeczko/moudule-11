@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styles from "./Lists.module.scss";
 
-import { getAllLists } from "../../redux/store";
 import ListForm from "../ListForm/ListForm";
+import { getAllLists } from "../../redux/listsRedux";
 const Lists = () => {
   const lists = useSelector(getAllLists);
   return (
